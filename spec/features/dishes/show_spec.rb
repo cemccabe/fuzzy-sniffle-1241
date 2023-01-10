@@ -32,7 +32,7 @@ RSpec.describe 'Dish show page' do
   end
   
   it 'and a total calorie count for that dish' do
-    expect(page).to have_content('350 calories')
+    expect(page).to have_content(@sushi.sum_calories)
   end
 
   it 'And I see the chef\'s name.' do

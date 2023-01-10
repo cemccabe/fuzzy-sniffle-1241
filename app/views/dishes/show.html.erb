@@ -2,9 +2,7 @@
 <p><h3> Description: </h3> <%= @dish.description %></p>
 <p><h3> Chef: </h3> <%= @dish.chef.name %></p>
 <p><h3> Ingredients: </h3>
-<br>
 <% @dish.ingredients.each do |ingredient| %>
-  <%= ingredient.name %>
+  <p><%= ingredient.name %></p>
 <% end %></p>
-<p><h3> Total Calories: </h3> <%=  %>
-
+<p><h3> Total Calories: </h3> <%= @dish.sum_calories %></p>
