@@ -22,21 +22,10 @@ RSpec.describe 'Chef show page' do
     DishIngredient.create!(dish_id: @steak.id, ingredient_id: @beef.id)
     DishIngredient.create!(dish_id: @steak.id, ingredient_id: @potatoes.id)
 
-    # @sushi = Dish.create!(name: 'Sushi', description: 'Japanese dish', chef_id: @gordon.id)
-    # @salad = Dish.create!(name: 'Salad', description: 'Healthy appetizer', chef_id: @gordon.id)
-    # @rice = Ingredient.create!(name: 'Rice', calories: 200)
-    # @salmon = Ingredient.create!(name: 'Salmon', calories: 150)
-    # @lettuce = Ingredient.create!(name: 'Lettuce', calories: 30)
-    # @dressing = Ingredient.create!(name: 'Dressing', calories: 250)
-    # DishIngredient.create!(dish_id: @sushi.id, ingredient_id: @rice.id)
-    # DishIngredient.create!(dish_id: @sushi.id, ingredient_id: @salmon.id)
-    # DishIngredient.create!(dish_id: @salad.id, ingredient_id: @lettuce.id)
-    # DishIngredient.create!(dish_id: @salad.id, ingredient_id: @dressing.id)
-
     visit chef_path(@gordon)
   end
 
-  describe 'When I visit a chef\'s show page' do
+  describe 'User Story #2' do
     it 'I see the name of that chef' do
       expect(page).to have_content(@gordon.name)
     end
@@ -55,6 +44,14 @@ RSpec.describe 'Chef show page' do
       click_button('Submit')
       expect(current_path).to eq(chef_path(@gordon))
       expect(page).to have_content(@salad.name)
+    end
+  end
+
+  describe 'User Story #3' do
+    it 'links all the ingredients that the chef uses' do
+      expect(page).to have_link("#{@gordon.name} Ingredients")
+      click_link("#{@gordon.name} Ingredients")
+      expect(current_path).to eq(chef_ingredients_path(@gordon))
     end
   end
 
