@@ -8,6 +8,6 @@
   <%= form.label :id %>
   <%= form.number_field :dish_id %>
   <%= form.submit 'Submit' %>
-
-
 <% end %>
+
+<%= link_to "#{@chef.name} Ingredients", chef_ingredients_path(@chef) %>
